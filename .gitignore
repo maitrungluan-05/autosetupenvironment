@@ -1,0 +1,7 @@
+dist/
+*.log
+doctor-output.json
+doctor-error.log
+.vscode/
+.idea/
+*.bak

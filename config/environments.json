@@ -1,0 +1,626 @@
+﻿{
+    "version":  "1.0.0",
+    "environments":  {
+                         "java":  {
+                                      "id":  "java",
+                                      "name":  "Java",
+                                      "displayName":  "Java Development Kit",
+                                      "description":  "Java 21 LTS, Maven, Gradle, and IntelliJ IDEA",
+                                      "packages":  [
+                                                       "jdk21",
+                                                       "maven",
+                                                       "gradle",
+                                                       "intellij"
+                                                   ]
+                                  },
+                         "python":  {
+                                        "id":  "python",
+                                        "name":  "Python",
+                                        "displayName":  "Python Environment",
+                                        "description":  "Python 3.13, pip, and virtualenv support",
+                                        "packages":  [
+                                                         "python3",
+                                                         "vscode"
+                                                     ]
+                                    },
+                         "node":  {
+                                      "id":  "node",
+                                      "name":  "Node.js",
+                                      "displayName":  "Node.js Environment",
+                                      "description":  "Node.js LTS, npm, npx, with pnpm \u0026 yarn option",
+                                      "packages":  [
+                                                       "nodejs",
+                                                       "pnpm",
+                                                       "yarn"
+                                                   ]
+                                  },
+                         "cpp":  {
+                                     "id":  "cpp",
+                                     "name":  "C/C++",
+                                     "displayName":  "C/C++ Development Tools",
+                                     "description":  "Visual Studio Build Tools, CMake, Ninja, LLVM",
+                                     "packages":  [
+                                                      "vs_buildtools",
+                                                      "cmake",
+                                                      "ninja",
+                                                      "llvm"
+                                                  ]
+                                 },
+                         "go":  {
+                                    "id":  "go",
+                                    "name":  "Go",
+                                    "displayName":  "Go Language",
+                                    "description":  "Golang compiler and tools",
+                                    "packages":  [
+                                                     "golang"
+                                                 ]
+                                },
+                         "rust":  {
+                                      "id":  "rust",
+                                      "name":  "Rust",
+                                      "displayName":  "Rust Toolchain",
+                                      "description":  "Rustup, rustc, and cargo",
+                                      "packages":  [
+                                                       "rustup"
+                                                   ]
+                                  },
+                         "web":  {
+                                     "id":  "web",
+                                     "name":  "Web Development",
+                                     "displayName":  "Web Development Preset",
+                                     "description":  "Git, Node.js LTS, VS Code, GitHub CLI",
+                                     "packages":  [
+                                                      "git",
+                                                      "nodejs",
+                                                      "vscode",
+                                                      "github_cli"
+                                                  ]
+                                 },
+                         "devops":  {
+                                        "id":  "devops",
+                                        "name":  "DevOps",
+                                        "displayName":  "DevOps \u0026 Cloud Preset",
+                                        "description":  "Git, Docker, kubectl, Helm, Terraform, AWS \u0026 Azure CLI",
+                                        "packages":  [
+                                                         "git",
+                                                         "github_cli",
+                                                         "docker_desktop",
+                                                         "kubectl",
+                                                         "helm",
+                                                         "terraform",
+                                                         "aws_cli",
+                                                         "azure_cli"
+                                                     ]
+                                    }
+                     },
+    "packages":  {
+                     "git":  {
+                                 "id":  "git",
+                                 "name":  "Git",
+                                 "displayName":  "Git for Windows",
+                                 "category":  "core",
+                                 "wingetId":  "Git.Git",
+                                 "minimumVersion":  "2.30.0",
+                                 "executables":  [
+                                                     "git.exe"
+                                                 ],
+                                 "versionCommand":  "git --version",
+                                 "versionRegex":  "git version (\\d+\\.\\d+\\.\\d+)",
+                                 "verificationCommands":  [
+                                                              "git --version"
+                                                          ],
+                                 "optional":  false,
+                                 "requiresAdmin":  false,
+                                 "providerType":  "winget",
+                                 "dependencies":  [
+
+                                                  ]
+                             },
+                     "jdk21":  {
+                                   "id":  "jdk21",
+                                   "name":  "JDK",
+                                   "displayName":  "Microsoft OpenJDK 21",
+                                   "category":  "java",
+                                   "wingetId":  "Microsoft.OpenJDK.21",
+                                   "minimumVersion":  "21",
+                                   "executables":  [
+                                                       "java.exe",
+                                                       "javac.exe"
+                                                   ],
+                                   "versionCommand":  "javac -version",
+                                   "versionRegex":  "(?:javac|openjdk version) \"?(\\d+(?:\\.\\d+)*)",
+                                   "verificationCommands":  [
+                                                                "java -version",
+                                                                "javac -version"
+                                                            ],
+                                   "optional":  false,
+                                   "requiresAdmin":  false,
+                                   "providerType":  "winget",
+                                   "dependencies":  [
+
+                                                    ]
+                               },
+                     "maven":  {
+                                   "id":  "maven",
+                                   "name":  "Maven",
+                                   "displayName":  "Apache Maven",
+                                   "category":  "java",
+                                   "minimumVersion":  "3.8.0",
+                                   "executables":  [
+                                                       "mvn.cmd",
+                                                       "mvn"
+                                                   ],
+                                   "versionCommand":  "mvn -version",
+                                   "versionRegex":  "Apache Maven (\\d+\\.\\d+\\.\\d+)",
+                                   "verificationCommands":  [
+                                                                "mvn -version"
+                                                            ],
+                                   "optional":  false,
+                                   "requiresAdmin":  false,
+                                   "providerType":  "manual",
+                                   "manualGuidance":  "Apache Maven has no verified Winget provider in this release. Install from https://maven.apache.org/download.cgi after verifying the vendor checksum.",
+                                   "dependencies":  [
+
+                                                    ]
+                               },
+                     "gradle":  {
+                                    "id":  "gradle",
+                                    "name":  "Gradle",
+                                    "displayName":  "Gradle Build Tool",
+                                    "category":  "java",
+                                    "minimumVersion":  "8.0.0",
+                                    "executables":  [
+                                                        "gradle.bat",
+                                                        "gradle"
+                                                    ],
+                                    "versionCommand":  "gradle -version",
+                                    "versionRegex":  "Gradle (\\d+\\.\\d+(?:\\.\\d+)?)",
+                                    "verificationCommands":  [
+                                                                 "gradle -version"
+                                                             ],
+                                    "optional":  false,
+                                    "requiresAdmin":  false,
+                                    "providerType":  "manual",
+                                    "manualGuidance":  "Gradle has no verified Winget provider in this release. Install from https://gradle.org/releases/ after verifying the vendor checksum.",
+                                    "dependencies":  [
+
+                                                     ]
+                                },
+                     "intellij":  {
+                                      "id":  "intellij",
+                                      "name":  "IntelliJ IDEA",
+                                      "displayName":  "IntelliJ IDEA Community",
+                                      "category":  "java",
+                                      "wingetId":  "JetBrains.IntelliJIDEA.Community",
+                                      "minimumVersion":  "2023.1.0",
+                                      "executables":  [
+                                                          "idea64.exe"
+                                                      ],
+                                      "versionCommand":  "",
+                                      "versionRegex":  "",
+                                      "verificationCommands":  [
+
+                                                               ],
+                                      "optional":  true,
+                                      "requiresAdmin":  false,
+                                      "providerType":  "winget",
+                                      "dependencies":  [
+
+                                                       ]
+                                  },
+                     "python3":  {
+                                     "id":  "python3",
+                                     "name":  "Python",
+                                     "displayName":  "Python 3.13",
+                                     "category":  "python",
+                                     "wingetId":  "Python.Python.3.13",
+                                     "minimumVersion":  "3.10.0",
+                                     "executables":  [
+                                                         "python.exe",
+                                                         "pip.exe"
+                                                     ],
+                                     "versionCommand":  "python --version",
+                                     "versionRegex":  "Python (\\d+\\.\\d+\\.\\d+)",
+                                     "verificationCommands":  [
+                                                                  "python --version",
+                                                                  "pip --version"
+                                                              ],
+                                     "optional":  false,
+                                     "requiresAdmin":  false,
+                                     "providerType":  "winget",
+                                     "dependencies":  [
+
+                                                      ]
+                                 },
+                     "nodejs":  {
+                                    "id":  "nodejs",
+                                    "name":  "Node.js",
+                                    "displayName":  "Node.js LTS",
+                                    "category":  "node",
+                                    "wingetId":  "OpenJS.NodeJS.LTS",
+                                    "minimumVersion":  "20.0.0",
+                                    "executables":  [
+                                                        "node.exe",
+                                                        "npm.cmd",
+                                                        "npx.cmd"
+                                                    ],
+                                    "versionCommand":  "node --version",
+                                    "versionRegex":  "v?(\\d+\\.\\d+\\.\\d+)",
+                                    "verificationCommands":  [
+                                                                 "node --version",
+                                                                 "npm --version"
+                                                             ],
+                                    "optional":  false,
+                                    "requiresAdmin":  false,
+                                    "providerType":  "winget",
+                                    "dependencies":  [
+
+                                                     ]
+                                },
+                     "pnpm":  {
+                                  "id":  "pnpm",
+                                  "name":  "pnpm",
+                                  "displayName":  "pnpm package manager",
+                                  "category":  "node",
+                                  "wingetId":  "pnpm.pnpm",
+                                  "minimumVersion":  "8.0.0",
+                                  "executables":  [
+                                                      "pnpm.cmd",
+                                                      "pnpm.exe"
+                                                  ],
+                                  "versionCommand":  "pnpm --version",
+                                  "versionRegex":  "(\\d+\\.\\d+\\.\\d+)",
+                                  "verificationCommands":  [
+                                                               "pnpm --version"
+                                                           ],
+                                  "optional":  true,
+                                  "requiresAdmin":  false,
+                                  "providerType":  "winget",
+                                  "dependencies":  [
+
+                                                   ]
+                              },
+                     "yarn":  {
+                                  "id":  "yarn",
+                                  "name":  "Yarn",
+                                  "displayName":  "Yarn Package Manager",
+                                  "category":  "node",
+                                  "wingetId":  "Yarn.Yarn",
+                                  "minimumVersion":  "1.22.0",
+                                  "executables":  [
+                                                      "yarn.cmd",
+                                                      "yarn.exe"
+                                                  ],
+                                  "versionCommand":  "yarn --version",
+                                  "versionRegex":  "(\\d+\\.\\d+\\.\\d+)",
+                                  "verificationCommands":  [
+                                                               "yarn --version"
+                                                           ],
+                                  "optional":  true,
+                                  "requiresAdmin":  false,
+                                  "providerType":  "winget",
+                                  "dependencies":  [
+
+                                                   ]
+                              },
+                     "vs_buildtools":  {
+                                           "id":  "vs_buildtools",
+                                           "name":  "VS Build Tools",
+                                           "displayName":  "Visual Studio Build Tools 2022",
+                                           "category":  "cpp",
+                                           "wingetId":  "Microsoft.VisualStudio.2022.BuildTools",
+                                           "minimumVersion":  "17.0.0",
+                                           "executables":  [
+                                                               "cl.exe"
+                                                           ],
+                                           "versionCommand":  "cl.exe 2\u003e\u00261",
+                                           "versionRegex":  "Compiler Version (\\d+\\.\\d+\\.\\d+)",
+                                           "verificationCommands":  [
+
+                                                                    ],
+                                           "optional":  false,
+                                           "requiresAdmin":  true,
+                                           "installArgs":  [
+                                                               "--override",
+                                                               "--passive --wait --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended"
+                                                           ],
+                                           "providerType":  "winget",
+                                           "dependencies":  [
+
+                                                            ]
+                                       },
+                     "cmake":  {
+                                   "id":  "cmake",
+                                   "name":  "CMake",
+                                   "displayName":  "CMake Build System",
+                                   "category":  "cpp",
+                                   "wingetId":  "Kitware.CMake",
+                                   "minimumVersion":  "3.20.0",
+                                   "executables":  [
+                                                       "cmake.exe"
+                                                   ],
+                                   "versionCommand":  "cmake --version",
+                                   "versionRegex":  "cmake version (\\d+\\.\\d+\\.\\d+)",
+                                   "verificationCommands":  [
+                                                                "cmake --version"
+                                                            ],
+                                   "optional":  false,
+                                   "requiresAdmin":  false,
+                                   "providerType":  "winget",
+                                   "dependencies":  [
+
+                                                    ]
+                               },
+                     "ninja":  {
+                                   "id":  "ninja",
+                                   "name":  "Ninja",
+                                   "displayName":  "Ninja Build System",
+                                   "category":  "cpp",
+                                   "wingetId":  "Ninja-build.Ninja",
+                                   "minimumVersion":  "1.10.0",
+                                   "executables":  [
+                                                       "ninja.exe"
+                                                   ],
+                                   "versionCommand":  "ninja --version",
+                                   "versionRegex":  "(\\d+\\.\\d+\\.\\d+)",
+                                   "verificationCommands":  [
+                                                                "ninja --version"
+                                                            ],
+                                   "optional":  false,
+                                   "requiresAdmin":  false,
+                                   "providerType":  "winget",
+                                   "dependencies":  [
+
+                                                    ]
+                               },
+                     "llvm":  {
+                                  "id":  "llvm",
+                                  "name":  "LLVM/Clang",
+                                  "displayName":  "LLVM Toolchain",
+                                  "category":  "cpp",
+                                  "wingetId":  "LLVM.LLVM",
+                                  "minimumVersion":  "15.0.0",
+                                  "executables":  [
+                                                      "clang.exe",
+                                                      "clang++.exe"
+                                                  ],
+                                  "versionCommand":  "clang --version",
+                                  "versionRegex":  "clang version (\\d+\\.\\d+\\.\\d+)",
+                                  "verificationCommands":  [
+                                                               "clang --version"
+                                                           ],
+                                  "optional":  true,
+                                  "requiresAdmin":  false,
+                                  "providerType":  "winget",
+                                  "dependencies":  [
+
+                                                   ]
+                              },
+                     "golang":  {
+                                    "id":  "golang",
+                                    "name":  "Go",
+                                    "displayName":  "Go Programming Language",
+                                    "category":  "go",
+                                    "wingetId":  "GoLang.Go",
+                                    "minimumVersion":  "1.20.0",
+                                    "executables":  [
+                                                        "go.exe"
+                                                    ],
+                                    "versionCommand":  "go version",
+                                    "versionRegex":  "go version go(\\d+\\.\\d+(?:\\.\\d+)?)",
+                                    "verificationCommands":  [
+                                                                 "go version"
+                                                             ],
+                                    "optional":  false,
+                                    "requiresAdmin":  false,
+                                    "providerType":  "winget",
+                                    "dependencies":  [
+
+                                                     ]
+                                },
+                     "rustup":  {
+                                    "id":  "rustup",
+                                    "name":  "Rust",
+                                    "displayName":  "Rust Toolchain (rustup)",
+                                    "category":  "rust",
+                                    "wingetId":  "Rustlang.Rustup",
+                                    "minimumVersion":  "1.25.0",
+                                    "executables":  [
+                                                        "rustup.exe",
+                                                        "rustc.exe",
+                                                        "cargo.exe"
+                                                    ],
+                                    "versionCommand":  "rustc --version",
+                                    "versionRegex":  "rustc (\\d+\\.\\d+\\.\\d+)",
+                                    "verificationCommands":  [
+                                                                 "rustc --version",
+                                                                 "cargo --version"
+                                                             ],
+                                    "optional":  false,
+                                    "requiresAdmin":  false,
+                                    "providerType":  "winget",
+                                    "dependencies":  [
+
+                                                     ]
+                                },
+                     "vscode":  {
+                                    "id":  "vscode",
+                                    "name":  "VS Code",
+                                    "displayName":  "Visual Studio Code",
+                                    "category":  "tools",
+                                    "wingetId":  "Microsoft.VisualStudioCode",
+                                    "minimumVersion":  "1.80.0",
+                                    "executables":  [
+                                                        "code.cmd",
+                                                        "code.exe"
+                                                    ],
+                                    "versionCommand":  "code --version",
+                                    "versionRegex":  "(\\d+\\.\\d+\\.\\d+)",
+                                    "verificationCommands":  [
+                                                                 "code --version"
+                                                             ],
+                                    "optional":  true,
+                                    "requiresAdmin":  false,
+                                    "providerType":  "winget",
+                                    "dependencies":  [
+
+                                                     ]
+                                },
+                     "github_cli":  {
+                                        "id":  "github_cli",
+                                        "name":  "GitHub CLI",
+                                        "displayName":  "GitHub CLI (gh)",
+                                        "category":  "tools",
+                                        "wingetId":  "GitHub.cli",
+                                        "minimumVersion":  "2.20.0",
+                                        "executables":  [
+                                                            "gh.exe"
+                                                        ],
+                                        "versionCommand":  "gh --version",
+                                        "versionRegex":  "gh version (\\d+\\.\\d+\\.\\d+)",
+                                        "verificationCommands":  [
+                                                                     "gh --version"
+                                                                 ],
+                                        "optional":  true,
+                                        "requiresAdmin":  false,
+                                        "providerType":  "winget",
+                                        "dependencies":  [
+
+                                                         ]
+                                    },
+                     "docker_desktop":  {
+                                            "id":  "docker_desktop",
+                                            "name":  "Docker Desktop",
+                                            "displayName":  "Docker Desktop for Windows",
+                                            "category":  "devops",
+                                            "wingetId":  "Docker.DockerDesktop",
+                                            "minimumVersion":  "4.20.0",
+                                            "executables":  [
+                                                                "docker.exe"
+                                                            ],
+                                            "versionCommand":  "docker --version",
+                                            "versionRegex":  "Docker version (\\d+\\.\\d+\\.\\d+)",
+                                            "verificationCommands":  [
+                                                                         "docker --version"
+                                                                     ],
+                                            "optional":  false,
+                                            "requiresAdmin":  true,
+                                            "providerType":  "winget",
+                                            "dependencies":  [
+
+                                                             ]
+                                        },
+                     "kubectl":  {
+                                     "id":  "kubectl",
+                                     "name":  "kubectl",
+                                     "displayName":  "Kubernetes CLI (kubectl)",
+                                     "category":  "devops",
+                                     "wingetId":  "Kubernetes.kubectl",
+                                     "minimumVersion":  "1.25.0",
+                                     "executables":  [
+                                                         "kubectl.exe"
+                                                     ],
+                                     "versionCommand":  "kubectl version --client",
+                                     "versionRegex":  "v(\\d+\\.\\d+\\.\\d+)",
+                                     "verificationCommands":  [
+                                                                  "kubectl version --client"
+                                                              ],
+                                     "optional":  false,
+                                     "requiresAdmin":  false,
+                                     "providerType":  "winget",
+                                     "dependencies":  [
+
+                                                      ]
+                                 },
+                     "helm":  {
+                                  "id":  "helm",
+                                  "name":  "Helm",
+                                  "displayName":  "Helm Package Manager for Kubernetes",
+                                  "category":  "devops",
+                                  "wingetId":  "Helm.Helm",
+                                  "minimumVersion":  "3.10.0",
+                                  "executables":  [
+                                                      "helm.exe"
+                                                  ],
+                                  "versionCommand":  "helm version",
+                                  "versionRegex":  "v(\\d+\\.\\d+\\.\\d+)",
+                                  "verificationCommands":  [
+                                                               "helm version"
+                                                           ],
+                                  "optional":  false,
+                                  "requiresAdmin":  false,
+                                  "providerType":  "winget",
+                                  "dependencies":  [
+
+                                                   ]
+                              },
+                     "terraform":  {
+                                       "id":  "terraform",
+                                       "name":  "Terraform",
+                                       "displayName":  "HashiCorp Terraform",
+                                       "category":  "devops",
+                                       "wingetId":  "Hashicorp.Terraform",
+                                       "minimumVersion":  "1.5.0",
+                                       "executables":  [
+                                                           "terraform.exe"
+                                                       ],
+                                       "versionCommand":  "terraform --version",
+                                       "versionRegex":  "Terraform v(\\d+\\.\\d+\\.\\d+)",
+                                       "verificationCommands":  [
+                                                                    "terraform --version"
+                                                                ],
+                                       "optional":  false,
+                                       "requiresAdmin":  false,
+                                       "providerType":  "winget",
+                                       "dependencies":  [
+
+                                                        ]
+                                   },
+                     "aws_cli":  {
+                                     "id":  "aws_cli",
+                                     "name":  "AWS CLI",
+                                     "displayName":  "Amazon Web Services CLI",
+                                     "category":  "devops",
+                                     "wingetId":  "Amazon.AWSCLI",
+                                     "minimumVersion":  "2.10.0",
+                                     "executables":  [
+                                                         "aws.exe"
+                                                     ],
+                                     "versionCommand":  "aws --version",
+                                     "versionRegex":  "aws-cli/(\\d+\\.\\d+\\.\\d+)",
+                                     "verificationCommands":  [
+                                                                  "aws --version"
+                                                              ],
+                                     "optional":  true,
+                                     "requiresAdmin":  false,
+                                     "providerType":  "winget",
+                                     "dependencies":  [
+
+                                                      ]
+                                 },
+                     "azure_cli":  {
+                                       "id":  "azure_cli",
+                                       "name":  "Azure CLI",
+                                       "displayName":  "Microsoft Azure CLI",
+                                       "category":  "devops",
+                                       "wingetId":  "Microsoft.AzureCLI",
+                                       "minimumVersion":  "2.50.0",
+                                       "executables":  [
+                                                           "az.cmd",
+                                                           "az.ps1",
+                                                           "az.exe"
+                                                       ],
+                                       "versionCommand":  "az --version",
+                                       "versionRegex":  "azure-cli (\\d+\\.\\d+\\.\\d+)",
+                                       "verificationCommands":  [
+                                                                    "az --version"
+                                                                ],
+                                       "optional":  true,
+                                       "requiresAdmin":  false,
+                                       "providerType":  "winget",
+                                       "dependencies":  [
+
+                                                        ]
+                                   }
+                 }
+}

@@ -1,0 +1,11 @@
+﻿{
+    "appName":  "DevSetup",
+    "appVersion":  "0.9.0-rc",
+    "logLevel":  "INFO",
+    "logDirectoryName":  "DevSetup\\Logs",
+    "processTimeoutSeconds":  600,
+    "wingetAgreementFlags":  "--accept-package-agreements --accept-source-agreements",
+    "autoBackupPath":  true,
+    "requireAdminPrompt":  true,
+    "maxRetryAttempts":  2
+}
