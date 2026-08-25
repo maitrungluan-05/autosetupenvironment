@@ -1,7 +1,7 @@
-# DevSetup
+# DLD Luan Dev
 
 > **Windows Development Environment Manager**  
-> A production-ready, modular, safe, and config-driven PowerShell CLI tool for Windows developers.
+> A modular, safe, config-driven PowerShell CLI for Windows developers.
 
 [![Windows](https://img.shields.io/badge/OS-Windows-blue.svg)](https://microsoft.com/windows)
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%20%7C%207%2B-blue.svg)](https://microsoft.com/powershell)
@@ -9,51 +9,30 @@
 
 ---
 
-## ðŸŒŸ Overview
+## Overview
 
-**DevSetup** automates the inspection, setup, verification, and maintenance of developer environments on Windows. Whether setting up a freshly installed Windows machine or maintaining an existing workstation, DevSetup provisions tools safely without breaking existing configurations or uninstalling existing software.
+**DLD Luan Dev** inspects, sets up, verifies, and maintains developer environments on Windows.
+It preserves installed tools, keeps installation actions explicit, and supports dry-run planning.
 
----
-
-## âœ¨ Features
-
-* **ðŸ›¡ï¸ Safe & Non-destructive**: Never uninstalls or overwrites existing developer tools. Detects installed versions and marks them as `[KEEP]`.
-* **ðŸ” Idempotent Engine**: Re-running DevSetup only installs missing or outdated components.
-* **ðŸ” Strict Elevation Control**: Runs without Administrator privileges by default. Elevation (UAC) is requested only when a specific package requires it (e.g. Visual Studio Build Tools).
-* **âš¡ Environment Refreshing**: Automatically reloads `User` and `Machine` environment variables (`PATH`, `JAVA_HOME`) into the current process so binaries are instantly verifiable without restarting PowerShell.
-* **ðŸ” Robust Detection**: Distinguishes JRE vs. JDK, ignores Microsoft Store execution redirects, and parses complex SemVer/numeric version strings.
-* **ðŸ§ª Machine-Readable Diagnostics**: `devsetup doctor --json` outputs clean JSON data for automated pipelines.
-* **ðŸ“‹ Dry Run Mode**: Preview installation plans (`--dry-run`) without modifying system state.
-* **ðŸ“¦ Config-Driven Architecture**: Easily extend environments and Winget package definitions in JSON configuration files.
-
----
-
-## ðŸš€ Quick Start
-
-### Secure Installation (Recommended)
-
-1. Download the latest release package and SHA256 checksum from Releases:
-   - `DevSetup-v0.9.0-rc.1.zip`
-   - `DevSetup-v0.9.0-rc.1.zip.sha256`
-
-2. Verify SHA256 checksum in PowerShell:
+## Quick Install
 
 ```powershell
-(Get-FileHash -Path .\DevSetup-v0.9.0-rc.1.zip -Algorithm SHA256).Hash -eq (Get-Content .\DevSetup-v0.9.0-rc.1.zip.sha256).Split(' ')[0]
+irm https://raw.githubusercontent.com/maitrungluan-05/autosetupenvironment/main/bootstrap.ps1 | iex
 ```
 
-3. Extract and run:
+The bootstrap is pinned to the verified RC asset, validates its SHA256 manifest, rejects unsafe
+archive entries, stages the runtime, then activates it transactionally. It retains the internal
+compatibility directory `%LOCALAPPDATA%\DevSetup` for existing RC.1 users.
+
+Open a new PowerShell window after installation:
 
 ```powershell
-Expand-Archive -Path .\DevSetup-v0.9.0-rc.1.zip -DestinationPath $env:LOCALAPPDATA\DevSetup -Force
-& $env:LOCALAPPDATA\DevSetup\devsetup.ps1
+dlddev
+dlddev doctor
+dlddev java -DryRun
 ```
 
-### Quick Bootstrap
-
-```powershell
-irm https://raw.githubusercontent.com/devsetup/devsetup/v0.9.0-rc.1/bootstrap.ps1 | iex
-```
+`devsetup` remains a compatibility launcher during RC.2; use `dlddev` for new scripts.
 
 ---
 
@@ -97,27 +76,27 @@ Select:
 devsetup
 
 # Environment Commands
-devsetup java
-devsetup python
-devsetup node
-devsetup cpp
-devsetup go
-devsetup rust
-devsetup web
-devsetup devops
+dlddev java
+dlddev python
+dlddev node
+dlddev cpp
+dlddev go
+dlddev rust
+dlddev web
+dlddev devops
 
 # All Environments Mode
-devsetup all
+dlddev all
 
 # Diagnostics & Updates
-devsetup doctor
-devsetup update
-devsetup update java
+dlddev doctor
+dlddev update
+dlddev update java
 
 # Information
-devsetup list
-devsetup help
-devsetup version
+dlddev list
+dlddev help
+dlddev version
 ```
 
 ### CLI Options
@@ -128,7 +107,7 @@ devsetup version
 | `--yes` | Suppresses confirmation prompts (ideal for CI/CD and automated setups). |
 | `--verbose` | Displays detailed diagnostic logs during execution. |
 | `--no-ide` | Skips optional IDE installations (e.g., IntelliJ IDEA, VS Code). |
-| `--json` | Outputs machine-readable JSON for `devsetup doctor`. |
+| `--json` | Outputs machine-readable JSON for `dlddev doctor`. |
 
 ---
 
@@ -152,14 +131,14 @@ devsetup version
 Run system diagnostics across all environments:
 
 ```powershell
-devsetup doctor
+dlddev doctor
 ```
 
 Output:
 
 ```text
 ========================================
-             DevSetup Doctor
+             dlddev Doctor
 ========================================
 
 System
@@ -185,7 +164,7 @@ Missing:  2
 ### JSON Doctor Output
 
 ```powershell
-devsetup doctor --json
+dlddev doctor --json
 ```
 
 Output:

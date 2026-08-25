@@ -26,7 +26,7 @@ function Invoke-DevSetupDoctor {
     $environmentData['devops'] = [ordered]@{ docker=$devOps.docker; wsl=$devOps.wsl; virtualization=$devOps.virtualization }
     $document = [ordered]@{ healthy=$healthy; exitCode=$exitCode; system=$systemChecks; environments=$environmentData; summary=[ordered]@{ totalChecks=$packageResults.Count; warnings=$warningChecks; requiredFailures=$requiredFailures } }
     if ($Json) { [Console]::Out.WriteLine(($document | ConvertTo-Json -Depth 8)); return $exitCode }
-    Write-DevSetupHeader -Title 'DevSetup Doctor'
+    Write-DevSetupHeader -Title 'DLD Luan Dev Doctor'
     Write-Host 'System' -ForegroundColor White
     Write-Host "  [OK] $($sysInfo.Caption) ($($sysInfo.Architecture))" -ForegroundColor Green
     Write-Host 'DevOps' -ForegroundColor White

@@ -2,7 +2,7 @@
 
 All notable changes to **DevSetup** will be documented in this file.
 
-## [0.9.0-rc.1] - 2026-08-25
+## [0.9.0-rc.2] - 2026-08-25`r`n`r`n### Changed`r`n- Rebranded user-facing product and primary CLI to DLD Luan Dev / dlddev while retaining DevSetup compatibility internals.`r`n- Pinned secure public bootstrap to official RC.2 release assets.`r`n`r`n## [0.9.0-rc.1] - 2026-08-25
 
 ### Added
 - Initial production release of **DevSetup CLI**.

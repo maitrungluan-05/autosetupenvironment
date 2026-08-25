@@ -3,7 +3,7 @@
 # ============================================================================
 
 function Write-DevSetupHeader {
-    param([string]$Title = "DevSetup")
+    param([string]$Title = "DLD Luan Dev")
     Clear-Host
     Write-Host "========================================" -ForegroundColor Cyan
     Write-Host "               $Title" -ForegroundColor Yellow
@@ -13,7 +13,7 @@ function Write-DevSetupHeader {
 
 function Write-DevSetupBanner {
     Write-Host "========================================" -ForegroundColor Cyan
-    Write-Host "               DevSetup" -ForegroundColor Yellow
+    Write-Host "             DLD Luan Dev" -ForegroundColor Yellow
     Write-Host "========================================" -ForegroundColor Cyan
     Write-Host "Windows Development Environment Manager" -ForegroundColor Gray
     Write-Host ""
@@ -147,7 +147,7 @@ function Display-InstallationPlan {
 
     Write-Host ""
     if ($IsDryRun) {
-        Write-Host "DevSetup Dry Run" -ForegroundColor Yellow
+        Write-Host "DLD Luan Dev Dry Run" -ForegroundColor Yellow
     } else {
         Write-Host "Installation plan:" -ForegroundColor White
     }

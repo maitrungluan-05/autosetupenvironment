@@ -1,11 +1,11 @@
-﻿{
-    "appName":  "DevSetup",
-    "appVersion":  "0.9.0-rc.1",
-    "logLevel":  "INFO",
-    "logDirectoryName":  "DevSetup\\Logs",
-    "processTimeoutSeconds":  600,
-    "wingetAgreementFlags":  "--accept-package-agreements --accept-source-agreements",
-    "autoBackupPath":  true,
-    "requireAdminPrompt":  true,
-    "maxRetryAttempts":  2
+{
+  "appName": "DLD Luan Dev",
+  "appVersion": "0.9.0-rc.2",
+  "logLevel": "INFO",
+  "logDirectoryName": "DevSetup\\Logs",
+  "processTimeoutSeconds": 600,
+  "wingetAgreementFlags": "--accept-package-agreements --accept-source-agreements",
+  "autoBackupPath": true,
+  "requireAdminPrompt": true,
+  "maxRetryAttempts": 2
 }

@@ -15,8 +15,8 @@ if (-not $Version) {
 }
 $distDir = Join-Path $rootDir "dist"
 
-$zipPath = Join-Path $distDir "DevSetup-v$Version.zip"
-$shaPath = Join-Path $distDir "DevSetup-v$Version.zip.sha256"
+$zipPath = Join-Path $distDir "DLD-Luan-Dev-v$Version.zip"
+$shaPath = Join-Path $distDir "DLD-Luan-Dev-v$Version.zip.sha256"
 
 if (-not (Test-Path $zipPath) -or -not (Test-Path $shaPath)) {
     Write-Host "[ERROR] Release artifacts not found in $distDir. Run build-release.ps1 first." -ForegroundColor Red
