@@ -1,8 +1,8 @@
-﻿# Changelog
+# Changelog
 
 All notable changes to **DevSetup** will be documented in this file.
 
-## [0.9.0-rc] - 2026-08-25
+## [0.9.0-rc.1] - 2026-08-25
 
 ### Added
 - Initial production release of **DevSetup CLI**.
@@ -23,4 +23,3 @@ All notable changes to **DevSetup** will be documented in this file.
 - Comprehensive Pester unit test suite with 100% pass rate.
 - Release builder `scripts/build-release.ps1` and verification `scripts/verify-release.ps1` with SHA256 checksums.
 - Secure, lightweight `bootstrap.ps1` installer.
-

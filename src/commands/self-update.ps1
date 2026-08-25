@@ -1,7 +1,3 @@
-function Test-DevSetupReleaseArchive { param([string]$ZipPath,[string]$ExpectedHash)
- if(-not(Test-DevSetupSha256 $ZipPath $ExpectedHash)){throw 'Checksum mismatch; update aborted.'};$stage=Join-Path $env:TEMP ('DevSetupStage-'+[guid]::NewGuid());New-Item $stage -ItemType Directory -Force|Out-Null;try{Expand-DevSetupZipSafely $ZipPath $stage;if(-not(Test-Path (Join-Path $stage 'devsetup.ps1'))){throw 'Release entry point missing.'};return $stage}catch{Remove-Item $stage -Recurse -Force -ErrorAction SilentlyContinue;throw}
-}
-function Invoke-DevSetupSelfUpdate { param($Config,[switch]$Yes)
- Write-Host 'Self-update requires a configured pinned HTTPS release URL and SHA256.' -ForegroundColor Yellow
- return 2
+function Invoke-DevSetupSelfUpdate { param($Config,[switch]$Yes,[string]$ActivePath,[scriptblock]$Downloader,[scriptblock]$Verifier)
+ $meta=$Config.release;if(-not $meta){Write-Host 'Self-update requires configured pinned release metadata.' -ForegroundColor Yellow;return 2};try{Test-ReleaseMetadata $meta;$zip=& $Downloader $meta.downloadUrl;$stage=Test-DevSetupReleaseArchive $zip $meta.sha256;if(-not $Yes -and -not(Confirm-Action 'Apply verified DevSetup update?')){Remove-Item $stage -Recurse -Force;return 5};$result=Invoke-ReleaseActivation $stage $ActivePath $Verifier;if(-not $result.Success){Write-Host "[ERROR] Update rollback completed: $($result.Error)" -ForegroundColor Red;return 3};return 0}catch{Write-Host "[ERROR] Update aborted: $($_.Exception.Message)" -ForegroundColor Red;return 2}
 }

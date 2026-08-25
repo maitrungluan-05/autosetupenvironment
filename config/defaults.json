@@ -1,6 +1,6 @@
 ﻿{
     "appName":  "DevSetup",
-    "appVersion":  "0.9.0-rc",
+    "appVersion":  "0.9.0-rc.1",
     "logLevel":  "INFO",
     "logDirectoryName":  "DevSetup\\Logs",
     "processTimeoutSeconds":  600,

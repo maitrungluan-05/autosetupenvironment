@@ -1,8 +1,9 @@
 # DevSetup Core - Generic Environment Pipeline
 function Invoke-EnvironmentPipeline {
- param([Parameter(Mandatory=$true)]$Config,[Parameter(Mandatory=$true)][string]$EnvironmentId,[switch]$DryRun,[switch]$Yes,[switch]$NoIde)
+ param([Parameter(Mandatory=$true)]$Config,[Parameter(Mandatory=$true)][string]$EnvironmentId,[string[]]$PackageIds,[switch]$DryRun,[switch]$Yes,[switch]$NoIde)
  $envDef=Get-EnvironmentDefinition $Config $EnvironmentId; if(-not $envDef){throw "Unknown environment '$EnvironmentId'."}
- $ids=Resolve-DevSetupPackages $Config @($envDef.packages)
+ $requestedIds = if ($PackageIds) { $PackageIds } else { @($envDef.packages) }
+ $ids=Resolve-DevSetupPackages $Config $requestedIds
  $detections=@(); foreach($id in $ids){$detections+=Detect-PackageStatus (Get-PackageDefinition $Config $id)}
  Display-DetectionTable $detections
  $plan=Create-InstallationPlan -DetectionResults $detections -NoIde:$NoIde

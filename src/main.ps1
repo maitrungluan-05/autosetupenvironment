@@ -1,7 +1,7 @@
 param([Parameter(Position=0)][string]$Command,[Parameter(Position=1)][string]$SubCommand,[switch]$DryRun,[switch]$Yes,[switch]$VerboseMode,[switch]$NoIde,[switch]$Json)
 $global:DevSetupVerbose=[bool]$VerboseMode;$global:DevSetupYes=[bool]$Yes;$global:DevSetupJson=[bool]$Json
 $scriptDir=$PSScriptRoot;$rootDir=Split-Path $scriptDir -Parent
-@('logger','platform','ui','config','process','paths','environment','versions','providers','dependencies','winget','detector','installer','verifier','pipeline')|ForEach-Object{. (Join-Path $scriptDir "core\$_.ps1")}
+@('logger','platform','ui','config','process','paths','environment','versions','providers','dependencies','winget','detector','installer','verifier','pipeline','release')|ForEach-Object{. (Join-Path $scriptDir "core\$_.ps1")}
 @('java','python','node','cpp','go','rust','web','devops')|ForEach-Object{. (Join-Path $scriptDir "environments\$_.ps1")}
 @('doctor','update','list','help','install','uninstall','self-update')|ForEach-Object{. (Join-Path $scriptDir "commands\$_.ps1")}
 Assert-WindowsPlatform

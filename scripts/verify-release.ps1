@@ -5,11 +5,14 @@
 
 [CmdletBinding()]
 param(
-    [string]$Version = "1.0.0"
+    [string]$Version
 )
 
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $rootDir = Split-Path -Parent $scriptDir
+if (-not $Version) {
+    $Version = (Get-Content -Path (Join-Path $rootDir "config\defaults.json") -Raw | ConvertFrom-Json).appVersion
+}
 $distDir = Join-Path $rootDir "dist"
 
 $zipPath = Join-Path $distDir "DevSetup-v$Version.zip"

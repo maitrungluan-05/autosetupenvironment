@@ -9,55 +9,55 @@
 
 ---
 
-## 🌟 Overview
+## ðŸŒŸ Overview
 
 **DevSetup** automates the inspection, setup, verification, and maintenance of developer environments on Windows. Whether setting up a freshly installed Windows machine or maintaining an existing workstation, DevSetup provisions tools safely without breaking existing configurations or uninstalling existing software.
 
 ---
 
-## ✨ Features
+## âœ¨ Features
 
-* **🛡️ Safe & Non-destructive**: Never uninstalls or overwrites existing developer tools. Detects installed versions and marks them as `[KEEP]`.
-* **🔁 Idempotent Engine**: Re-running DevSetup only installs missing or outdated components.
-* **🔐 Strict Elevation Control**: Runs without Administrator privileges by default. Elevation (UAC) is requested only when a specific package requires it (e.g. Visual Studio Build Tools).
-* **⚡ Environment Refreshing**: Automatically reloads `User` and `Machine` environment variables (`PATH`, `JAVA_HOME`) into the current process so binaries are instantly verifiable without restarting PowerShell.
-* **🔍 Robust Detection**: Distinguishes JRE vs. JDK, ignores Microsoft Store execution redirects, and parses complex SemVer/numeric version strings.
-* **🧪 Machine-Readable Diagnostics**: `devsetup doctor --json` outputs clean JSON data for automated pipelines.
-* **📋 Dry Run Mode**: Preview installation plans (`--dry-run`) without modifying system state.
-* **📦 Config-Driven Architecture**: Easily extend environments and Winget package definitions in JSON configuration files.
+* **ðŸ›¡ï¸ Safe & Non-destructive**: Never uninstalls or overwrites existing developer tools. Detects installed versions and marks them as `[KEEP]`.
+* **ðŸ” Idempotent Engine**: Re-running DevSetup only installs missing or outdated components.
+* **ðŸ” Strict Elevation Control**: Runs without Administrator privileges by default. Elevation (UAC) is requested only when a specific package requires it (e.g. Visual Studio Build Tools).
+* **âš¡ Environment Refreshing**: Automatically reloads `User` and `Machine` environment variables (`PATH`, `JAVA_HOME`) into the current process so binaries are instantly verifiable without restarting PowerShell.
+* **ðŸ” Robust Detection**: Distinguishes JRE vs. JDK, ignores Microsoft Store execution redirects, and parses complex SemVer/numeric version strings.
+* **ðŸ§ª Machine-Readable Diagnostics**: `devsetup doctor --json` outputs clean JSON data for automated pipelines.
+* **ðŸ“‹ Dry Run Mode**: Preview installation plans (`--dry-run`) without modifying system state.
+* **ðŸ“¦ Config-Driven Architecture**: Easily extend environments and Winget package definitions in JSON configuration files.
 
 ---
 
-## 🚀 Quick Start
+## ðŸš€ Quick Start
 
 ### Secure Installation (Recommended)
 
 1. Download the latest release package and SHA256 checksum from Releases:
-   - `DevSetup-v1.0.0.zip`
-   - `DevSetup-v1.0.0.zip.sha256`
+   - `DevSetup-v0.9.0-rc.1.zip`
+   - `DevSetup-v0.9.0-rc.1.zip.sha256`
 
 2. Verify SHA256 checksum in PowerShell:
 
 ```powershell
-(Get-FileHash -Path .\DevSetup-v1.0.0.zip -Algorithm SHA256).Hash -eq (Get-Content .\DevSetup-v1.0.0.zip.sha256).Split(' ')[0]
+(Get-FileHash -Path .\DevSetup-v0.9.0-rc.1.zip -Algorithm SHA256).Hash -eq (Get-Content .\DevSetup-v0.9.0-rc.1.zip.sha256).Split(' ')[0]
 ```
 
 3. Extract and run:
 
 ```powershell
-Expand-Archive -Path .\DevSetup-v1.0.0.zip -DestinationPath $env:LOCALAPPDATA\DevSetup -Force
+Expand-Archive -Path .\DevSetup-v0.9.0-rc.1.zip -DestinationPath $env:LOCALAPPDATA\DevSetup -Force
 & $env:LOCALAPPDATA\DevSetup\devsetup.ps1
 ```
 
 ### Quick Bootstrap
 
 ```powershell
-irm https://raw.githubusercontent.com/devsetup/devsetup/v1.0.0/bootstrap.ps1 | iex
+irm https://raw.githubusercontent.com/devsetup/devsetup/v0.9.0-rc.1/bootstrap.ps1 | iex
 ```
 
 ---
 
-## 🎮 Interactive CLI
+## ðŸŽ® Interactive CLI
 
 Run `devsetup` without arguments to launch the interactive menu:
 
@@ -90,7 +90,7 @@ Select:
 
 ---
 
-## 💻 CLI Commands & Options
+## ðŸ’» CLI Commands & Options
 
 ```powershell
 # Interactive Menu
@@ -132,7 +132,7 @@ devsetup version
 
 ---
 
-## 🛠️ Supported Environments
+## ðŸ› ï¸ Supported Environments
 
 | Environment | Included Packages | Default Version / Winget ID |
 | :--- | :--- | :--- |
@@ -147,7 +147,7 @@ devsetup version
 
 ---
 
-## 🩺 Doctor Command
+## ðŸ©º Doctor Command
 
 Run system diagnostics across all environments:
 
@@ -214,7 +214,7 @@ Exit Codes for `doctor`:
 
 ---
 
-## 🧪 Testing
+## ðŸ§ª Testing
 
 DevSetup contains a Pester test suite covering version parsing, config validation, detector logic, and mocked winget interactions:
 
@@ -224,7 +224,7 @@ powershell -ExecutionPolicy Bypass -File .\tests\run-tests.ps1
 
 ---
 
-## 🏗️ Release Build Process
+## ðŸ—ï¸ Release Build Process
 
 Build release ZIP and SHA256 checksum artifacts:
 
@@ -235,7 +235,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\verify-release.ps1
 
 ---
 
-## 🗑️ Uninstalling DevSetup
+## ðŸ—‘ï¸ Uninstalling DevSetup
 
 To remove DevSetup from your system:
 
@@ -248,6 +248,6 @@ Remove-Item -Path $env:LOCALAPPDATA\DevSetup -Recurse -Force
 
 ---
 
-## 📄 License
+## ðŸ“„ License
 
 DevSetup is licensed under the [MIT License](LICENSE).
